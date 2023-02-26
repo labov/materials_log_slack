@@ -1,8 +1,3 @@
-# materials_log_slack
-
-custom logging library, send error log to slack for maintainance
-
-```python
 import os
 import sys
 
@@ -53,5 +48,3 @@ materials.log.removeAllHandlers()
 with Materials(ABS_PATH) as m:
     m.log.debug("__enter__, __exit__ test")
     m.log.info("__exit__ renaming and remove handler test")
-
-```
