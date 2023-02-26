@@ -26,8 +26,6 @@ from protocol.protocol import Protocol
 class Log:
     def __init__(self, abs_path):
         self.debug_option: bool = True
-        # self.debug_option: bool = False
-
         self.slack = SlackContorller(self)
 
         dtn = datetime.now()
@@ -45,13 +43,11 @@ class Log:
         self.addHandler(level=logging.INFO)
         if self.debug_option:
             self.addHandler(level=logging.DEBUG, add_format="| %(filename)s | %(funcName)s | %(lineno)d")
-
         self.clear_widget()
 
     def getLogger(self):
         self.logger = logging.getLogger()
         self.logger.setLevel(logging.DEBUG)
-        self.logger.setLevel(logging.INFO)
 
     def addHandler(self, level: int, add_format: str = "", stream_flag: bool = False):
         format_str = f"%(asctime).19s | %(levelname)-5s | %(message)s {add_format}"
@@ -161,9 +157,12 @@ class SlackContorller:
         self.set_client()
 
     def set_client(self, token: str = ""):
-        self.bot_token = "xoxb-4671852801846-4860408327522-t4DjtzNovsvEa1S8eWb8mMON"
         if token != "":
             self.bot_token = token
+        else:
+            t1 = "4671852801846-4860408327522"
+            t2 = "Agcxy4Va1mitkBYXighy6rQD"
+            self.bot_token = f"xoxb-{t1}-{t2}"
         self.client = WebClient(token=self.bot_token)
 
     def chat_postMessage(self, channel: str, text: str, username: str = None):

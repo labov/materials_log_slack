@@ -18,11 +18,8 @@ Settings - Install App - Install to Workspace => get token of client
 Add bot apps to channel (channel detail : integratons tab)
 """
 
-materials.slack.set_client("xoxb-4671852801846-4860408327522-t4DjtzNovsvEa1S8eWb8mMON")
+materials.slack.set_client(token="")
 materials.log.slack_channel_id = "C04RA8E78BU"
-
-
-materials.log.debug_option = False
 
 materials.log.info("logger start, save to log/Y/M/D/logs_LEVEL.log")
 
@@ -39,12 +36,13 @@ MAIN_FILE = os.path.join(materials.abspath.dir, "__main__.py")
 materials.slack.upload_files([ABS_PATH, MAIN_FILE], materials.log.slack_channel_id)
 
 materials.log.info("renaming files to seperate logs")
-materials.log.renaming_file()
 
 materials.log.info("logger end")
+
+materials.log.renaming_file()
 materials.log.removeAllHandlers()
 
 
-with Materials(ABS_PATH) as m:
-    m.log.debug("__enter__, __exit__ test")
-    m.log.info("__exit__ renaming and remove handler test")
+# with Materials(ABS_PATH) as m:
+#     m.log.debug("__enter__, __exit__ test")
+#     m.log.info("__exit__ renaming and remove handler test")
