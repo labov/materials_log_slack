@@ -42,7 +42,7 @@ materials.log.info("logger end")
 materials.log.renaming_file()
 materials.log.removeAllHandlers()
 
-
-# with Materials(ABS_PATH) as m:
-#     m.log.debug("__enter__, __exit__ test")
-#     m.log.info("__exit__ renaming and remove handler test")
+with Materials(ABS_PATH) as m:
+    m.log.debug("__enter__, __exit__ test")
+    m.log.info("__exit__ renaming and remove handler test")
+    materials.wait(3)
